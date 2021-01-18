@@ -1,0 +1,17 @@
+var testClass: class {
+    var a:int, b:int;
+    func add(): int return a+b; end add
+};
+var arr: array of int;
+
+allocate arr of length 4;
+allocate testClass;
+arr[1] = 42;
+
+while true do
+{
+    allocate testClass;
+    write arr[1];
+}
+
+write 1;

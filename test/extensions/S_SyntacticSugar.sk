@@ -1,0 +1,39 @@
+# Since most of the syntatic sugar is just a translation to something else
+# (for loops -> while loops) (i++ -> i = i + 1) etc. Then it is only
+# necessary to check if the translation is correct. This can be done by visual
+# inspection of the pretty printer and output.
+
+var rec: record of {a: int, b: bool};
+
+allocate rec;
+
+for rec.a = 1; rec.a < 10; rec.a += 3; do
+{
+    write rec.a;
+}
+
+for rec.a = 3; to 5 do
+{
+    write rec.a;
+}
+
+rec.a++;
+rec.a--;
+rec.a /= 1;
+rec.a *= 2;
+rec.a += 10;
+rec.a -= 10;
+write rec.a;    # 10
+
+rec.a = rec.a > 100 ? 30 : 40;
+
+write rec.a;    # 40
+
+
+rec = {30, true};
+
+write rec.a;    # 30
+
+rec.a = -4;
+
+write rec.a;

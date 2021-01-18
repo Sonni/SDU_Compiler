@@ -1,0 +1,21 @@
+type class1 = class {
+    var v1: int;
+
+    func __plus(other: int): int
+        return v1 + other;
+    end __plus
+
+};
+
+var obj1: class1;
+var temp: int;
+var temp2: int;
+
+allocate obj1;
+obj1->v1 = 7;
+
+temp = 3;
+
+temp2 = obj1 + temp;
+
+write temp2;

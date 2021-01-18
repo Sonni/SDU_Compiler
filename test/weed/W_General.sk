@@ -1,0 +1,57 @@
+var hej: int;
+var other: int;
+
+func f(): int
+    var a: int;
+    return 0;
+    a = 40;
+    a = 10;
+    return 10;
+end f
+
+if (true || false) && (true && false) then
+{
+	hej=1;
+} 
+
+if !(other > 10 && hej == other) then
+{
+	hej=2;
+	hej=3+4*2;
+} 
+
+if (2 == 2 || hej == 7) then 
+{
+	hej=3;
+} 
+
+while false do
+{
+	hej=4;
+}
+
+if (2 == 3) then
+{
+	hej=5;
+}
+else
+{
+	hej=6;
+}
+
+if (2 == 2) then
+{
+	hej=5;
+}
+else
+{
+	hej=6;
+}
+
+while true do
+{
+    break;
+	hej=4;
+}
+
+write 0;

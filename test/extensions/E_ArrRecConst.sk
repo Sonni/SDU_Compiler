@@ -1,0 +1,18 @@
+var arr: array of int;
+var rec: record of {a: int, b: bool};
+
+allocate arr of length 10;
+allocate rec;
+
+(* The programmer is allowed to assign as many value as wanted to, note that
+   a runtime error will be thrown if array is out of bounds *)
+arr = {1, 4, 3, 0, 20};
+
+(* Every value of a record must be assigned *)
+rec = {42, false};
+
+write arr[0];
+write arr[4];
+
+write rec.a;
+write rec.b;

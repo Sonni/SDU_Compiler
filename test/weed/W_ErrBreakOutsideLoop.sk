@@ -1,0 +1,8 @@
+func f(): int
+    if true then
+        break;
+
+    return 42;
+end f
+
+write f();

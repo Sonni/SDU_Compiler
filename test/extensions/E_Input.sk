@@ -1,0 +1,8 @@
+var a: int;
+var b: bool;
+
+a << in;
+b << in;
+
+write a;    # Should output input to a
+write b;    # On input != 0, ouput is False, otherwise True

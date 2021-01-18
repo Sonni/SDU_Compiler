@@ -1,0 +1,16 @@
+# A function template in a non-template class
+# We want this to work
+
+type C = class{
+
+  template|~T~|
+  func f():int
+    return 4;
+  end f
+
+};
+var c: C;
+allocate c;
+
+
+write c->f|~int~|();

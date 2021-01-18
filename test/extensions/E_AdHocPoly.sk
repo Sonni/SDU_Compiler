@@ -1,0 +1,15 @@
+type t_int = int;
+type t_bool = bool;
+
+func f(a: t_bool): int
+    return 1;
+end f
+
+func f(a: t_int): int
+    return 3;
+end f
+
+
+
+write f(true);
+write f(40);

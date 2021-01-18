@@ -1,0 +1,21 @@
+var a: int;
+
+a = 0;
+while true do
+{
+    write a;
+    if a == 3 then
+        break;
+    a++;
+}
+
+a = 0;
+while a < 5 do
+{
+    a++;
+    if a == 3 then
+        continue;
+    write a;
+}
+
+write 0;

@@ -1,0 +1,8 @@
+var i: int;
+
+i = 0;
+
+if i then
+    write 1;
+
+write 0;

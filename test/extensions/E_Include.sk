@@ -1,0 +1,7 @@
+# IncludeMe.test MUST be in the same folder as the compiler
+include IncludeMe.test
+
+(* imported from test.sk *)
+a = add(2, 40);
+
+write a;

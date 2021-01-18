@@ -1,0 +1,30 @@
+# This test is dedicated to test pointers inside of pointers.
+# Note that the scope inside the class cannot access the outside, this is a
+# bad design decision and it makes sense to change it
+
+type parent = class {
+    type child = class {
+        type list = record of {value: int, next: list};
+        var age: int;
+        var info: list;
+        func setAge(): int
+            age = 42;
+            return 0;
+        end setAge
+    };
+    var children: array of child;
+
+};
+
+
+
+var tmp: int;
+var Sonni: parent;
+
+allocate Sonni;
+allocate Sonni->children of length 3;
+write 0;
+allocate Sonni->children[2]->info;
+write 1;
+Sonni->children[2]->info.value = 30;
+write 2;

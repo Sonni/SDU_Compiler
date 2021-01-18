@@ -1,0 +1,15 @@
+type Integer = int;
+type A = template |~T~| class{
+var t: T;
+};
+
+template |~T~|
+func foo(arg : T):int
+    return arg->t + 1;
+end foo
+
+var a: A|~int~|;
+allocate a;
+a->t = 4;
+
+write foo|~A|~Integer~|~|(a);

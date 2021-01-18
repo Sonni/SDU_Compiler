@@ -1,0 +1,61 @@
+type class1 = template|~T, I~| class {
+  type A = int;
+    var tmp : T;
+    #var rec: record of {i : int};
+    var arr : array of int;
+    var i: I;
+};
+
+type classnotemp = class{
+  type A = int;
+  var tmp: bool;
+};
+
+var i: int;
+
+var ai: class1|~bool, int~|;
+
+#var ar: array of class1|~int, bool~|;   #SEGFAULT in gen class function
+
+
+
+func myfunc(): bool
+  return ai->tmp;         #stmt return
+end myfunc
+
+allocate ai;              #stmt allocate
+
+write ai->tmp;            #stmt write
+
+ai->tmp = 4;              #stmt assignment
+
+
+allocate ai->arr of length ai->i; #stmt allocate of length
+
+if ai->tmp then write 3;                #stmt if
+(*
+if (ai->i < 43) then write 43;          #harder stmt if
+
+write 3 < ai->i;
+
+write (ai->i) + 4;
+
+write ai->i != ai->i;
+
+
+if ai->tmp then write 3; else write 4;   #stmt if else
+
+while ai->tmp do write 4;       #stmt write
+
+ai->tmp << in;        #stmt in
+
+free(ai->arr);    #stmt free
+
+switch(ai->i)
+{
+  case ai->i: write 1;
+}
+
+*)
+
+#ai->tmp = {ai.tmp, 3};

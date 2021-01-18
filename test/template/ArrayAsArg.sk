@@ -1,0 +1,35 @@
+type intarr1 = array of int;
+
+template|~t~|
+func sum_arr(a: t1): int
+
+    var i: int;
+    var j: int;
+    var res: int;
+    res = 0;
+    i = 0;
+    j = |a|;
+    while (i < j) do
+    {
+        res = 1;
+        i = i + 1;
+    }
+
+    return res;
+end sum_arr
+
+var arr: intarr1;
+var i: int;
+
+allocate arr of length 7;
+
+arr[0] = 4;
+arr[1] = 5;
+arr[2] = 6;
+arr[3] = 7;
+arr[4] = 8;
+arr[5] = 9;
+arr[6] = 10;
+
+
+i = sum_arr|~intarr1~|(arr);

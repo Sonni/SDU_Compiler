@@ -1,0 +1,12 @@
+template|~t1~|
+func add(a: int): int
+    return 10;
+end add
+
+template|~t1~|
+func add_int(): int
+    return 20;
+end add_int
+
+write add|~int~|(8);
+write add_int|~int~|();

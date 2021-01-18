@@ -1,0 +1,16 @@
+(* Pretty print after inlining and check by visual inspection *)
+
+func f(): int
+    func add(a: int, b: int): int
+        return a + b;
+    end add
+    return add(2, 40);
+end f
+
+func f2(): int
+    var a: int;
+    a = f();
+    return a;
+end f2
+
+write f2();

@@ -1,0 +1,28 @@
+type class1 = class {
+    var v1: int;
+
+    func __plus(other: class1): int
+        return v1 + other->v1;
+    end __plus
+
+};
+
+template|~t1, t2~|
+func add(a: t1, b: t1): t2
+    var res: t2;
+    res = a + b;
+    return res;
+end add
+
+var obj1: class1;
+var obj2: class1;
+
+allocate obj1;
+allocate obj2;
+
+obj1->v1 = 10;
+obj2->v1 = 7;
+
+
+write add|~class1, int~|(obj1, obj2);
+write add|~int, int~|(26, 10);

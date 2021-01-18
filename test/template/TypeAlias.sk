@@ -1,0 +1,47 @@
+
+type BinaryTree = template|~T1, T2~| class {
+    var t1: T1;
+    var t2: T2;
+
+    func __print(): int
+        write t1;
+        write t2;
+        return 0;
+    end __print
+};
+
+type Pair = template|~T1, T2~| class {
+    var t1: T1;
+    var t2: T2;
+
+    func __print(): int
+        write t1;
+        write t2;
+        return 0;
+    end __print
+};
+
+type Vector = template|~T1~| class {
+    var t1: T1;
+
+    func __print(): int
+       write t1;
+       return 0;
+    end __print
+};
+
+type A = BinaryTree|~int, Vector|~Pair|~bool, int~|~|~|;
+var tree: A;
+var vector: Vector|~Pair|~bool, int~|~|;
+var pair: Pair|~bool, int~|;
+var sink: int;
+
+allocate tree; allocate vector; allocate pair;
+pair->t1 = true;
+pair->t2 = 5;
+
+vector->t1 = pair;
+tree->t1 = 3;
+tree->t2 = vector;
+
+write tree;

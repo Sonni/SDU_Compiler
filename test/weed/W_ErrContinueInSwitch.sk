@@ -1,0 +1,7 @@
+
+switch (0) {
+case 40:
+    continue;
+}
+
+write 0;

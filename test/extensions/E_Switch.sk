@@ -1,0 +1,42 @@
+var a: int;
+var b: int;
+
+a = 40;
+b = a;
+
+# Switch with breaks;
+
+switch (a) {
+case 40:
+    {
+    write 30;
+    break;
+    }
+case b:
+    {
+        write 1;
+        b = 42;
+        break;
+    }
+case 10:
+    {
+    write 11;
+    break;
+    }
+}
+
+write b;
+
+# Switch without breaks
+
+
+switch (b) {
+case 1:
+    write 1;
+case 40:
+    write 2;
+case 10:
+    {
+    write 3;
+    }
+}

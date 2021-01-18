@@ -1,0 +1,317 @@
+#
+# This file contains two different
+# containers, the binary tree and the
+# linked list. It also contains a
+# function template, that takes a
+# container as a template argument
+# and does some work on it.
+#
+
+var sink : int;
+
+type Tree = template|~t1~| class {
+    type Node = class {
+            var key: t1;
+            var left:Node;
+            var right:Node;
+            var parent:Node;
+            func __equal(other: Node): bool
+                return key == other->key;
+            end __equal
+
+            func __nequal(other: Node): bool
+                return key != other->key;
+            end __nequal
+
+
+            };
+
+
+
+   var root: Node;
+    var treesize: int;
+
+      func print():int
+        return print_in(root);
+    end print
+
+      func print_in(node: Node):int
+        if(node->left != null) then sink = print_in(node->left);
+        write node->key;
+        if(node->right != null) then sink = print_in(node->right);
+
+        return 0;
+      end print_in
+
+
+  func delete(key: t1): int
+    if(treesize != 0) then
+      return delete_in(root, key);
+    else
+      return 0;
+  end delete
+
+  func delete_in(node: Node, key: t1): int
+    var suc: Node;
+    var temp: t1;
+
+    if(node->key == key) then{
+
+      if(node->right == null && node->left == null) then{   #CASE have no children
+        if (node->parent->right == node) then{
+          node->parent->right = null;
+        }
+        else{
+          node->parent->left = null;
+        }
+        treesize--;
+        return 0;
+      }
+      if (node->left == null) then{  #CASE only have right child
+        #TODO
+        if(node->parent->left == node) then{
+          node->parent->left = node->right;
+        }
+        else{
+          node->parent->right = node->right;
+        }
+
+        node->right->parent = node->parent;
+
+
+        return 0;
+      }
+      if(node->right == null) then{  #CASE only have left child
+        #TODO
+        if(node->parent->left == node) then{
+          node->parent->left = node->left;
+        }
+        else{
+          node->parent->right = node->left;
+        }
+
+        node->right->parent = node->parent;
+        return 0;
+      }
+
+
+      #CASE have two children
+      suc = successor(node);
+      temp = node->key;
+      node->key = suc->key;
+      suc->key = temp;
+      return delete_in(suc, key);
+
+      return 0;
+    }
+    if (node->key > key) then {
+      return delete_in(node->left, key);
+    }
+    else{
+      return delete_in(node->right, key);
+    }
+  end delete_in
+
+    func successor(node: Node): Node
+      var cursor: Node;
+
+      cursor = node->right;
+
+      while (cursor->left != null) do
+      {
+        cursor = cursor->left;
+      }
+      return cursor;
+
+    end successor
+
+      func insert(key: t1): int
+    var newNode: Node;
+
+        if(treesize == 0) then {
+
+          allocate newNode;
+          newNode->key = key;
+          root = newNode;
+          treesize++;
+          return 0;
+        }
+        treesize++;
+        return insert_in(root, key);
+
+      end insert
+
+    func insert_in(node: Node, key: t1): int
+        var newNode: Node;
+
+        if(node->key > key) then {
+          if(node->left != null) then{
+            # go left in tree
+            return insert_in(node->left, key);
+          }
+          else{
+            # insert here
+
+            allocate newNode;
+            newNode->key = key;
+            newNode->right = null;
+            newNode->left = null;
+            newNode->parent = node;
+            node->left = newNode;
+
+          }
+
+        }
+        else{
+          if(node->right != null) then{
+            #go right in tree
+            return insert_in(node->right, key);
+          }
+          else{
+            #insert here
+
+            allocate newNode;
+            newNode->key = key;
+            newNode->right = null;
+            newNode->left = null;
+            newNode->parent = node;
+            node->right = newNode;
+          }
+        }
+
+        return 0;
+      end insert_in
+
+
+};
+
+type integer = class {
+
+    var num: int;
+
+    func __greater(other: integer): bool
+        return num > other->num;
+    end __greater
+
+    func __equal(other: integer): bool
+        return num == other->num;
+    end __equal
+
+    func __nequal(other: integer): bool
+        return num != other->num;
+    end __nequal
+
+    func __print(): int
+        return num;
+    end __print
+
+};
+
+
+type LinkedList = template|~T~| class{
+  var sink : int;
+  type Node = class {var key: T; var next: Node;};
+
+  var listsize: int;
+  var root: Node;
+
+  func insert(key: T): int
+    if listsize == 0 then
+    {
+      allocate root;
+      root->key = key;
+      listsize++;
+      return 0;
+    } else
+    {
+      listsize++;
+      return insert_in(key, root);
+    }
+    end insert
+
+  func insert_in(key: T, node: Node): int
+
+    if (node->next == null) then
+    {
+      allocate node->next;
+      node->next->key = key;
+      return 0;
+    }
+    else
+    {
+      return insert_in(key, node->next);
+    }
+  end insert_in
+
+  func delete(key: T):int
+
+    var cursor: Node;
+    var prev: Node;
+
+    if (root == null) then
+      return 0;
+    if (root->key == key) then
+    {
+      root = root->next;
+      return 0;
+    }
+
+    prev = root;
+    cursor = root->next;
+
+
+    while (cursor != null) do
+    {
+      if (cursor->key == key) then
+      {
+        prev->next = cursor->next;
+        return 0;
+      }
+      prev = cursor;
+      cursor = cursor->next;
+    }
+    return 0;
+
+  end delete
+
+  func print(): int
+    if (root != null) then
+      sink = print_in(root);
+    return 0;
+  end print
+
+    func print_in(node: Node):int
+      write node->key;
+      if (node->next != null) then
+        sink = print_in(node->next);
+      return 0;
+    end print_in
+};
+
+
+
+template |~C~|
+func get_numbers(): C
+  var c: C;
+
+  allocate c;
+
+  sink = c->insert(35);
+  sink = c->insert(4);
+  sink = c->insert(66);
+
+  return c;
+end get_numbers
+
+
+type A = LinkedList|~int~|;
+type B = Tree|~int~|;
+
+var a: LinkedList|~int~|;
+var b: Tree|~int~|;
+
+a = get_numbers|~A~|();
+sink = a->print();
+
+b = get_numbers|~B~|();
+sink = b->print();

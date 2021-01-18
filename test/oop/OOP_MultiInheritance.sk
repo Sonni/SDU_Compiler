@@ -1,0 +1,42 @@
+# Tests for multiple inheritance and returning of class from functions
+
+type animal = class {
+    var age: int;
+
+};
+
+type human = class extend animal {
+    var id: int;
+
+    func setId(i: int): int
+        id = i;
+        return 0;
+    end setId
+};
+
+type parent = class extend human {
+    var id: int;
+
+    func setAge(a: int): int
+        age = a;
+        return 0;
+    end setAge
+};
+
+func createParent(id: int, age: int): parent
+    var p: parent;
+
+    allocate p;
+    tmp = p->setId(id);
+    tmp = p->setAge(age);
+    return p;
+end createParent
+
+var tmp: int;
+var Sonni: parent;
+
+Sonni = createParent(30, 42);
+
+
+write Sonni->id;    # 30
+write Sonni->age;   # 42

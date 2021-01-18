@@ -1,0 +1,12 @@
+type parent = class {
+    private func getNum(): int
+        return 5;
+    end getNum
+};
+
+
+
+var Sonni: parent;
+allocate Sonni;
+
+write Sonni->getNum();

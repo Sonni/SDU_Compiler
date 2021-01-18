@@ -1,0 +1,73 @@
+type class1 = class {
+    var v1: int;
+    
+    func __plus(other: class1): int
+        return v1 + other->v1;
+    end __plus
+
+    func __plus(other: int): int
+        return v1 + other;
+    end __plus
+
+    func __div(other: int): int
+        return v1 / other;
+    end __div
+
+    func __div(other: class1): int
+        return v1 / other->v1;
+    end __div
+
+    func __equal(other: int): bool
+        return v1 == other;
+    end __equal
+
+    func __equal(other: class1): bool
+        return v1 == other->v1;
+    end __equal
+
+    func __greaterEqual(other: class1): bool
+        return v1 >= other->v1;
+    end __greaterEqual
+    
+    func __greaterEqual(other: int): bool
+        return v1 >= other;
+    end __greaterEqual
+
+};
+
+var obj1: class1;
+var obj2: class1;
+var res: int;
+var res2: bool;
+
+allocate obj2;
+allocate obj1;
+
+obj1->v1 = 3;
+obj2->v1 = 109;
+
+res = obj1 + obj2;
+write res;
+
+res = obj1 + 7;
+write res;
+
+res = obj1 / 3;
+write res;
+
+res = obj2 / obj1;
+write res;
+
+res2 = obj1 == 2;
+write res2;
+
+res2 = obj1 == obj2;
+write res2;
+
+res2 = obj1 >= 10;
+write res2;
+
+res2 = obj2 >= obj1;
+write res2;
+
+

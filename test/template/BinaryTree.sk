@@ -1,0 +1,194 @@
+var sink: int;
+
+type Tree = class {
+
+  type Node = record of{
+        key: int,
+        left:Node,
+        right:Node,
+        parent:Node };
+
+  private var treesize: int;
+  private var root: Node;
+  var e : int;
+
+
+  func size(): int
+    return treesize;
+  end size
+
+  func print():int
+    return print_in(root);
+  end print
+
+  func print_in(node: Node):int
+    #write 0;
+    if(node.left != null) then sink = print_in(node.left);
+  #  write 1;
+    write node.key;
+  #  write 2;
+    if(node.right != null) then sink = print_in(node.right);
+  #  write 3;
+
+    return 0;
+  end print_in
+
+  func insert(key: int): int
+var newNode: Node;
+
+
+    if(treesize == 0) then {
+
+      allocate newNode;
+      newNode.key = key;
+      root = newNode;
+      treesize++;
+      return 0;
+    }
+    treesize++;
+    return insert_in(root, key);
+
+  end insert
+
+  func insert_in(node: Node, key: int): int
+  var newNode: Node;
+
+    if(node.key > key) then {
+      if(node.left != null) then{
+        # go left in tree
+        return insert_in(node.left, key);
+      }
+      else{
+        # insert here
+
+        allocate newNode;
+        newNode.key = key;
+        newNode.right = null;
+        newNode.left = null;
+        newNode.parent = node;
+        node.left = newNode;
+
+      }
+
+    }
+    else{
+      if(node.right != null) then{
+        #go right in tree
+        return insert_in(node.right, key);
+      }
+      else{
+        #insert here
+
+        allocate newNode;
+        newNode.key = key;
+        newNode.right = null;
+        newNode.left = null;
+        newNode.parent = node;
+        node.right = newNode;
+      }
+    }
+
+    return 0;
+  end insert_in
+
+  func delete(key: int): int
+    if(treesize != 0) then
+      return delete_in(root, key);
+    else
+      return 0;
+  end delete
+
+  func delete_in(node: Node, key: int): int
+    var suc: Node;
+    var temp: int;
+
+
+    if(node.key == key) then{
+
+      if(node.right == null && node.left == null) then{   #CASE have no children
+        if (node.parent.right == node) then{
+          node.parent.right = null;
+        }
+        else{
+          node.parent.left = null;
+        }
+        treesize--;
+        return 0;
+      }
+      if (node.left == null) then{  #CASE only have right child
+        #TODO
+        if(node.parent.left == node) then{
+          node.parent.left = node.right;
+        }
+        else{
+          node.parent.right = node.right;
+        }
+
+        node.right.parent = node.parent;
+
+
+        return 0;
+      }
+      if(node.right == null) then{  #CASE only have left child
+        #TODO
+        if(node.parent.left == node) then{
+          node.parent.left = node.left;
+        }
+        else{
+          node.parent.right = node.left;
+        }
+
+        node.right.parent = node.parent;
+        return 0;
+      }
+
+
+      #CASE have two children
+      suc = successor(node);
+      temp = node.key;
+      node.key = suc.key;
+      suc.key = temp;
+      return delete_in(suc, key);
+
+      return 0;
+    }
+    if (node.key > key) then {
+      return delete_in(node.left, key);
+    }
+    else{
+      return delete_in(node.right, key);
+    }
+  end delete_in
+
+    func successor(node: Node): Node
+      var cursor: Node;
+
+      cursor = node.right;
+
+      while (cursor.left != null) do
+      {
+        cursor = cursor.left;
+      }
+      return cursor;
+
+    end successor
+
+
+
+};
+var tree : Tree;
+allocate tree;
+
+
+sink = tree->insert(3);
+sink = tree->insert(10);
+sink = tree->insert(1);
+sink = tree->insert(0);
+sink = tree->insert(55);
+sink = tree->insert(6);
+sink = tree->print();
+
+write 60;
+
+sink = tree->insert(40);
+sink = tree->print();

@@ -1,0 +1,47 @@
+type class1 = template<T, I> class {
+    var tmp : T;
+    var rec: record of {i : int};
+    var i: I;
+};
+
+var i: int;
+
+var ai: class1<bool, int>;
+#var rec : record of {a: int, b: int};
+#var ar: array of ai;
+
+
+
+func myfunc(): bool
+  return ai->tmp;         #stmt return
+end myfunc
+
+write ai->tmp;            #stmt write
+
+ai->tmp = 4;              #stmt assignment
+
+allocate ai;              #stmt allocate
+
+if ai->tmp then write 3;                #stmt if
+
+if ai->tmp then write 3; else write 4;   #stmt if else
+
+while ai->tmp do write 4;       #stmt write
+
+ai->tmp << in;        #stmt in
+
+free(ai->rec);    #stmt free
+
+switch(ai->i)
+{
+  case ai->i: write 1;
+}
+
+
+
+
+
+
+#allocate ar of length ai->tmp; #TODO this is not done yet
+
+#ai->tmp = {ai.tmp, 3};

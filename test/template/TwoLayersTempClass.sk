@@ -1,0 +1,17 @@
+type A = template|~T~| class{
+var b: B|~int~|;
+};
+
+
+type B = template |~T~| class{
+var t: T;
+};
+
+
+
+var a: A|~int~|;
+
+allocate a;
+allocate a->b;
+
+write 4;

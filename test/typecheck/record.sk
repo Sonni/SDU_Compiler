@@ -1,0 +1,13 @@
+type rec_type = record of {a: int, b: rec_type};
+
+var rec: rec_type;
+
+allocate rec;
+
+rec.a = 30;
+
+allocate rec.b;
+
+rec.b.a = 42;
+
+write 0;

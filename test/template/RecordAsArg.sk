@@ -1,0 +1,21 @@
+type rec1 = record of {
+                x: int,
+                y: int
+            };
+
+
+template|~t1~|
+func temp(a: t1): int
+    var res: int;
+    res = res + a.x;
+    res = res + a.y;
+    return res;
+end temp
+
+var r1: rec1;
+allocate r1;
+
+r1.x = 3;
+r1.y = 7;
+
+write temp|~rec1~|(r1);

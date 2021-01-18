@@ -1,0 +1,6 @@
+type a = int;
+type b = int;
+
+b = a;
+
+write 0;

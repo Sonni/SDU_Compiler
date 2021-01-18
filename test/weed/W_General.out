@@ -1,0 +1,24 @@
+Test by visual inspect.. compile with: ./compiler -p n
+to pretty print the AST and exit after
+
+func f(): int
+    var a: int;
+    return 0;
+end f
+
+if other <= 10 || hej != other then
+{
+	hej=2;
+	hej=11;
+}
+
+hej=3;
+hej=6;
+hej=5;
+
+while true do
+{
+    break;
+}
+
+write 0;

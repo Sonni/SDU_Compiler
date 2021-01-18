@@ -1,0 +1,30 @@
+type t_rec = record of {a: int, b: bool};
+var arr1: array of int;
+var arr2: array of int;
+var rec1: t_rec;
+var rec2: t_rec;
+
+
+allocate arr1 of length 10;
+allocate arr2 of length 10;
+
+arr2[0] = 42;
+arr2[3] = 45;
+arr2[9] = 20;
+
+arr1 <- arr2;
+
+write arr1[0];
+write arr1[3];
+write arr1[9];
+
+allocate rec1;
+allocate rec2;
+
+rec2.a = 142;
+rec2.b = true;
+
+rec1 <- rec2;
+
+write rec1.a;
+write rec1.b;

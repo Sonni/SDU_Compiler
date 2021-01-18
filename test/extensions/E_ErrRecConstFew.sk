@@ -1,0 +1,8 @@
+var rec: record of {a: int, b: bool};
+
+allocate rec;
+
+rec = {42};
+
+write rec.a;
+write rec.b;

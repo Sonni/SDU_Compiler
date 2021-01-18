@@ -1,0 +1,16 @@
+type class1 = class {
+    var v1: int;
+};
+
+#This function assumes that t1 is some class with a certain member variable
+template|~t1, t2~|
+func test(a: t1, b: t2): bool
+    a->v1 = b;
+    return true;
+end test
+
+var obj1: class1;
+allocate obj1;
+
+write test|~class1, int~|(obj1, 10);
+write obj1->v1;

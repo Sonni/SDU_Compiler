@@ -1,0 +1,21 @@
+type parent = class {
+    func setId(): int
+        var i: int;
+        func f(): int
+            i = 10;
+            return 0;
+        end f
+        return f() + i;
+    end setId
+};
+
+
+
+var tmp: int;
+var Sonni: parent;
+
+allocate Sonni;
+tmp = Sonni->setId();
+
+
+write tmp;

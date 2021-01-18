@@ -1,0 +1,15 @@
+var arr1: array of int;
+var arr2: array of int;
+
+allocate arr1 of length 100;
+allocate arr2 of length 4;
+arr2[1] = 42;
+
+while true do
+{
+    allocate arr1 of length 100;
+
+    write arr2[1];
+}
+
+write 1;

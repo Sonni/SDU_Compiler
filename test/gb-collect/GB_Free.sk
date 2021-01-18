@@ -1,0 +1,21 @@
+(* Note that garbage collection must be enabled *)
+
+(* There is a bug here, the runtime check works by checking if the value
+   at the pointer is equal 0, we could just set the value to 0 when freeing
+   but this value is the length of the previously allocated rec, arr or class
+   thus it also represents the free block space. To fix this, runtime check
+   has to be changed to check reference counter instead of the first value *)
+
+var arr: array of int;
+var arr2: array of int;
+
+allocate arr of length 10;
+
+arr[2] = 42;
+
+write arr[2];
+
+free(arr);
+
+(* This should case a runtime error, but the value at arr is 10, not 0 *)
+write arr[2];

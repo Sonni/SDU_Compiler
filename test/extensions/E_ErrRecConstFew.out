@@ -1,0 +1,2 @@
+Type checker should output an error since all the values of a record must be
+assigned a value when using this feature.

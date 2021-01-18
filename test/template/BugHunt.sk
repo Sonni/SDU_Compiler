@@ -1,0 +1,17 @@
+
+
+type Tree = class {
+
+
+  func print():int
+    return 0;
+  end print
+
+
+
+
+
+};
+
+
+write 0;

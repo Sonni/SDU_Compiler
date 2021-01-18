@@ -1,0 +1,77 @@
+Errors:
+
+1. The following code generates two functions with the same name, even though one of them is templated, and the other is not
+template<>
+func add(a: int): int
+    return 7;
+end add
+
+func add(a: int): int
+    return 10;
+end add
+
+write add<>(3);
+write add(3);
+
+-------------------------------------------------
+2. When writing a variable name followed by the "<" operator, the compiler thinks it's a call to a template function, even though it's just a comparison
+var temp: int;
+temp = 1;
+
+while (temp < 10) do {
+    temp = temp + 1;
+}
+write 0;
+-------------------------------------------------
+3. Same as above
+type c1 = template<t1> class {
+};
+
+type l = c1<a>;
+
+write 0;
+-------------------------------------------------
+
+The lines
+
+var_type : T_ID T_COLON type temp_args
+T_ID temp_args T_OPEN_P act_list T_CLOSE_P
+
+vs
+
+expression T_LESS expression
+
+
+in shere_khan.y. It is because of a shift/reduce conflict.
+
+T_ID temp_args   -----------------------------------------------> T_ID < ...
+expression T_LESS --> expression->term->variable->T_ID T_LESS --> T_ID < ...
+
+
+4. When overloading operators on classes, one should be able to define that overload with multiple different types, as for example:
+
+type myClass = class {
+    var num : int;
+    func __plus(other : int): int
+        return num + other;
+    end __plus
+
+    func __plus(other : myClass) : int
+        return num + other->num;
+    end __plus
+}
+
+So that we can do the following:
+
+var obj1 : myClass;
+var obj2 : myClass;
+allocate obj1;
+allocate obj2;
+obj1->num = 3;
+obj2->num = 7;
+write obj1 + obj2;  # Should write 10
+write obj1 + 7;     # Should write 10
+
+However, this might also be allowed:
+
+write 7 + obj1;     # Should write 10?

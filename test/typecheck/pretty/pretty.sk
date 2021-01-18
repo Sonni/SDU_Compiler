@@ -1,0 +1,20 @@
+type t_int      = int;
+type t_rec      = record of {value: int, next: t_rec};
+var rec: t_rec;
+var i: int;
+
+func add(a: int, b: int): int
+    i++;
+    return a + b;
+end add
+
+i = 0;
+while i < 10 do
+{
+    rec.value += add(3, 4);
+}
+
+if true then
+    write 1;
+else
+    write 0;

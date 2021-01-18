@@ -1,0 +1,16 @@
+type funcs = class {
+    var res: int;
+    func fib(n: int): int
+        if n == 1 then
+            return 1;
+        res = n*fib(n-1);
+        return res;
+    end fib
+};
+
+
+var lib: funcs;
+allocate lib;
+
+write lib->fib(5);  # 120
+write lib->res;     # 120

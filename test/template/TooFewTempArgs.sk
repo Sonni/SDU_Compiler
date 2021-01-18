@@ -1,0 +1,6 @@
+template|~t1~|
+func test(a: t1): t1
+    return a;
+end test
+
+write test|~~|(3);

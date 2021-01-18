@@ -1,0 +1,6 @@
+var rec: record of {a: int};
+var arr: array of int;
+
+rec = arr;
+
+write 0;

@@ -1,0 +1,94 @@
+var sink: int;
+
+type LinkedList = template|~T~| class{
+  type Node = class {var key: T; var next: Node;};
+
+  var listsize: int;
+  var root: Node;
+
+  func insert(key: T): int
+    if listsize == 0 then
+    {
+      allocate root;
+      root->key = key;
+      listsize++;
+      return 0;
+    } else
+    {
+      listsize++;
+      return insert_in(key, root);
+    }
+    end insert
+
+  func insert_in(key: T, node: Node): int
+
+    if (node->next == null) then
+    {
+      allocate node->next;
+      node->next->key = key;
+      return 0;
+    }
+    else
+    {
+      return insert_in(key, node->next);
+    }
+  end insert_in
+
+  func delete(key: T):int
+
+    var cursor: Node;
+    var prev: Node;
+
+    if (root == null) then
+      return 0;
+    if (root->key == key) then
+    {
+      root = root->next;
+      return 0;
+    }
+
+    prev = root;
+    cursor = root->next;
+
+
+    while (cursor != null) do
+    {
+      if (cursor->key == key) then
+      {
+        prev->next = cursor->next;
+        return 0;
+      }
+      prev = cursor;
+      cursor = cursor->next;
+    }
+    return 0;
+
+  end delete
+
+  func print(): int
+    if (root != null) then
+      sink = print_in(root);
+    return 0;
+  end print
+
+    func print_in(node: Node):int
+      write node->key;
+      if (node->next != null) then
+        sink = print_in(node->next);
+      return 0;
+    end print_in
+};
+
+var ll: LinkedList|~bool~|;
+
+
+allocate ll;
+
+
+sink = ll->insert(true);
+sink = ll->insert(true);
+sink = ll->insert(false);
+sink = ll->insert(true);
+
+
+sink = ll->print();

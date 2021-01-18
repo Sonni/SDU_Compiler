@@ -1,0 +1,73 @@
+
+
+type Tree = class {
+
+  type Node = record of{
+        key: int,
+        left:Node,
+        right:Node };
+
+  private var treesize: int;
+  private var root: Node;
+
+  func size(): int
+    return treesize;
+  end size
+
+  func insert(key: int): int
+var newNode: Node;
+
+    if(treesize == 0) then {
+
+      allocate newNode;
+      newNode.key = key;
+      root = newNode;
+      return 0;
+    }
+
+    return insert_in(root, key);
+
+
+  end insert
+
+  func insert_in(node: Node, key: int): int
+  var newNode: Node;
+    if(node.key < key) then {
+
+      if(node.left != null) then{
+        #go left in tree
+        return insert_in(node.left, key);
+      }
+      else{
+        #insert here
+
+        allocate newNode;
+        newNode.key = key;
+        node.left = newNode;
+      }
+
+    }
+    else{
+      if(node.right != null) then{
+        #go right in tree
+        return insert_in(node.right, key);
+      }
+      else{
+        #insert here
+
+        allocate newNode;
+        newNode.key = key;
+        node.right = newNode;
+      }
+    }
+
+    return 0;
+  end insert_in
+
+};
+var tree : Tree;
+allocate tree;
+
+
+write tree->insert(3);
+write tree->insert(4);

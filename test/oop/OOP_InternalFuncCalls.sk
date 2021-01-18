@@ -1,0 +1,30 @@
+# Test if function calls inside of a class works as expected
+
+type funcs = class {
+    var counter: int;
+    var tmp: int;
+    func fib(n: int): int
+        if n == 1 then
+            return 1;
+        tmp = fibCounter();
+        return n*fib(n-1);
+    end fib
+
+    func calcFib(n: int): int
+        var res: int;
+        res = fib(n);
+        return res;
+    end calcFib
+
+    func fibCounter(): int
+        counter++;
+        return 0;
+    end fibCounter
+};
+
+
+var lib: funcs;
+allocate lib;
+
+write lib->calcFib(5);  # 120
+write lib->counter;     # 4

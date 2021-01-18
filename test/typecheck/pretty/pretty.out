@@ -1,0 +1,18 @@
+func add(a: int, b: int): int
+    i = (i:int + 1:int):int;
+    return (a:int + b:int):int;
+end add
+
+var i: int;
+var rec: t_rec:record;
+type t_rec = record of {value: int, next: t_rec:record};
+type t_int = int;
+i = 0:int;
+while (i:int < 10:int):bool
+{
+    rec.value = add(3:int, 4:int):int;
+}
+if true:bool then
+    write 1:int;
+else
+    write 0:int;

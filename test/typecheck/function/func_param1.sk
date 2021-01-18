@@ -1,0 +1,12 @@
+type integer = int;
+type boolean = bool;
+
+var a: integer;
+var b: boolean;
+
+
+func f(a: int, b: bool): int
+    return 0;
+end f
+
+write f(a, boolean);

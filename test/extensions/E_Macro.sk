@@ -1,0 +1,10 @@
+#  Note that before the pre-processor detects a match, the macro must must be
+#  separated by spaces in both ends
+define bool_macro true
+define int_macro 42
+define w write
+
+if bool_macro then
+    write int_macro ;
+
+w 0;

@@ -1,0 +1,31 @@
+# Test for overloading of functions
+
+type human = class {
+    var id: int;
+    var b: int;
+    func setId(): int
+        id = 30;
+        return 0;
+    end setId
+};
+
+type parent = class extend human {
+    var b: int;
+    func setId(): int
+        id = 42;
+        return 0;
+    end setId
+};
+
+
+
+var tmp: int;
+var Sonni: parent;
+
+allocate Sonni;
+tmp = Sonni->setId();
+
+Sonni->b = 42;
+
+write Sonni->id; # 30
+write Sonni->b;  # 42

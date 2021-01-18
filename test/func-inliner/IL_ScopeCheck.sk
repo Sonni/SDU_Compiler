@@ -1,0 +1,16 @@
+var a: int;
+
+func f(): int
+    var a: int;
+    return tmp();
+end f
+
+func tmp(): int
+    a = 10;
+    return 0;
+end tmp
+
+a = 42;
+
+write tmp();
+write a;

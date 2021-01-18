@@ -1,0 +1,11 @@
+const string hello = "Hello";
+const string world = " World\n";
+var tmp: int;
+
+!inline func f(): int
+    write hello;
+    return 0;
+end f
+
+tmp = f();
+write world;

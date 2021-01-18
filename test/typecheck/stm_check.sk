@@ -1,0 +1,41 @@
+const string hello_world = "HelloWorld";
+const bool PRINT = true;
+
+type t_int      = int;
+type t_bool     = bool;
+type t_int_arr  = array of t_int;
+type t_rec      = record of {arr: t_int_arr, next: t_rec};
+type t_string   = string;
+
+var arr: array of bool;
+var rec: t_rec;
+var i: int;
+
+func add(a: int, b: int): int
+    i++;
+    return a + b;
+end add
+
+func add(a: int, b: int, c: int): int
+    i++;
+    return a + b + c;
+end add
+
+allocate rec;
+allocate arr of length 100;
+allocate rec.arr of length 30;
+allocate rec.next;
+
+arr = null;
+
+i = 0;
+while i < 10 do
+{
+    rec.arr[10] = add(3, 4);
+    rec.arr[11] = add(3, 4, 2);
+}
+
+if (PRINT) then
+    write hello_world;
+else
+    write 0;

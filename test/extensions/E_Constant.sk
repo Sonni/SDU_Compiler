@@ -1,0 +1,12 @@
+const int a = 40;
+const int globalA = 3;
+const bool b = 42;
+
+func f(): int
+    return globalA;
+end f
+
+
+write f();
+write a;
+write b;

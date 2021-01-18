@@ -1,0 +1,8 @@
+type a = int;
+
+template|~t1~|
+func test(b: t1): int
+    return b;
+end test
+
+write test|~a~|(3);

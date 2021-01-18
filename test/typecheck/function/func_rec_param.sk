@@ -1,0 +1,8 @@
+type rec = record of {a: int, next: rec};
+var r: rec;
+
+func f(a: rec): int
+    return 0;
+end f
+
+write f(r);

@@ -1,0 +1,46 @@
+# The test check if all kinds of statements are renamed and inlined correctly
+
+func f(): int
+    type t_arr = array of int;
+    var a: int;
+    var arr1: t_arr;
+    var arr2: t_arr;
+    var rec: record of {a: int};
+
+    a = 0;
+    while a < 3 do
+    {
+        a++;
+        write a;
+    }
+    if a == 3 then
+        write true;
+    else
+        write false;
+
+    allocate arr1 of length 10;
+    allocate arr2 of length a;
+    allocate rec;
+
+    arr2[1] = 42;
+    arr1 <- arr2;
+
+    free(arr1);
+    rec.a = 30;
+
+    switch (a)
+    {
+        case a:
+            {
+                write 1;
+                break;
+            }
+        case 40:
+            write 2;
+    }
+
+
+    return 0;
+end f
+
+write f();

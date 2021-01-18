@@ -1,0 +1,16 @@
+var rec: record of {a: int, b: int, arr: array of int};
+var arr: array of int;
+
+allocate arr of length 4;
+allocate rec;
+allocate rec;
+
+arr[1] = 42;
+
+while true do
+{
+    allocate rec;
+    write arr[1];
+}
+
+write 1;

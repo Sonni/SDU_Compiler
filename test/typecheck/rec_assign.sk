@@ -1,0 +1,5 @@
+var rec: record of {a: int};
+
+rec.a++;
+
+write 0;

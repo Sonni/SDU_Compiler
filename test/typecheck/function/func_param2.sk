@@ -1,0 +1,9 @@
+type integer = int;
+
+var a: integer;
+
+func f(a: int): int
+    return 0;
+end f
+
+write f();

@@ -1,0 +1,9 @@
+var arr: array of int;
+
+allocate arr of length 100;
+
+arr[2, 2] = 30;
+
+write arr[0, 2, 2];     # 0*3*3 + 2*3 + 3 = 8
+write arr[2, 2];        # 2*3 + 2 = 8
+write arr[8];           # + 8 = 8

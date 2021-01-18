@@ -1,0 +1,14 @@
+type A = class {
+    var v1: int;
+};
+
+template|~t1~|
+func temp(a: t1) : t1
+    return a;
+end temp
+
+
+var a: A;
+allocate a;
+
+write temp|~int~|(a);
